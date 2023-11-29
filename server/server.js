@@ -4,7 +4,6 @@ const port = 8000;
 const path = require('path');
 
 app.get('/shopdata', (req, res) => {
-    console.log('GET request received at /api');
     res.json(require('./shopdata.json'));
 });
 
