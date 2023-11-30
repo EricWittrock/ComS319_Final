@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {tryLogin, tryRegister} from '../tryLogin.js';
 
 function Login() {
 
@@ -8,6 +9,18 @@ function Login() {
         document.getElementById('page').style.filter="";
         document.querySelectorAll('.loginContainer').forEach(e => e.style.display="none");
         setIsRegistering(false);
+    }
+
+    function clickLogin() {
+        const email = document.getElementById('typeEmailX').value;
+        const password = document.getElementById('typePasswordX').value;
+        tryLogin(email, password);
+    }
+
+    function clickRegister() {
+        const email = document.getElementById('form3Example3').value;
+        const password = document.getElementById('form3Example4').value;
+        tryRegister(email, password);
     }
 
     // Sign up Page
@@ -36,20 +49,6 @@ function Login() {
                         <div className="card bg-glass">
                         <div className="card-body px-4 py-5 px-md-5">
                             <form>
-                            <div className="row">
-                                <div className="col-md-6 mb-4">
-                                <div className="form-outline">
-                                    <input type="text" id="form3Example1" className="form-control" />
-                                    <label className="form-label" htmlFor="form3Example1">First name</label>
-                                </div>
-                                </div>
-                                <div className="col-md-6 mb-4">
-                                <div className="form-outline">
-                                    <input type="text" id="form3Example2" className="form-control" />
-                                    <label className="form-label" htmlFor="form3Example2">Last name</label>
-                                </div>
-                                </div>
-                            </div>
         
                             <div className="form-outline mb-4">
                                 <input type="email" id="form3Example3" className="form-control" />
@@ -68,7 +67,7 @@ function Login() {
                                 </label>
                             </div> */}
         
-                            <button type="submit" className="btn btn-primary btn-block mb-4">
+                            <button type="button" onClick={clickRegister} className="btn btn-primary btn-block mb-4">
                                 Sign up
                             </button>
         
@@ -93,7 +92,7 @@ function Login() {
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                 <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div className="card bg-dark text-white" style={{borderRadius: "1rem"}}>
+                    <div id="loginBox" className="card text-white" style={{borderRadius: "1rem"}}>
                     <div className="card-body p-5 text-center">
 
                         <div className="mb-md-5 mt-md-4 pb-5">
@@ -111,9 +110,9 @@ function Login() {
                             <label className="form-label" htmlFor="typePasswordX">Password</label>
                         </div>
 
-                        <p className="small mb-5 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p>
+                        <p className="small mb-5 pb-lg-2 text-white-50">Forgot password? That's too bad.</p>
 
-                        <button className="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                        <button className="btn btn-outline-light btn-lg px-5" type="button" onClick={clickLogin}>Login</button>
 
                         <div className="d-flex justify-content-center text-center mt-4 pt-1">
                             <a href="#!" className="text-white"><i className="fab fa-facebook-f fa-lg"></i></a>

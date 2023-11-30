@@ -87,3 +87,9 @@ nav {
   color: rgb(237 195 255);
   text-shadow: 0 0 10px #5c1470bf;
 }
+
+#loginBox {
+  background-color: #813a7e;
+  background-image: linear-gradient(25deg, #612d4e, transparent);
+  border: 1px solid #895483;
+}
