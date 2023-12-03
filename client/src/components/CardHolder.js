@@ -1,39 +1,64 @@
+import React, { useEffect, useState } from 'react';
 import Card from './Card';
-import { useEffect, useState } from 'react';
 
 function CardHolder() {
-    const [fireworks, setFireworks] = useState([]);
+  const [fireworks, setFireworks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 4;
 
-    useEffect(() => {
-        fetch('http://localhost:8000/shopdata')
-            .then(res => res.json())
-            .then(data => {
-                const d = data.fireworkData.filter(i=>i.type=='firework');
-                setFireworks(d);
-            }).catch(err => {
-                console.log("Error loading shop data:")
-                console.log(err);
-            });
-    }, []);
+  useEffect(() => {
+    fetch('http://localhost:8000/shopdata')
+      .then(res => res.json())
+      .then(data => {
+        const d = data.fireworkData.filter(i => i.type === 'firework');
+        setFireworks(d);
+      })
+      .catch(err => {
+        console.log('Error loading shop data:');
+        console.log(err);
+      });
+  }, []);
 
+  const totalCards = fireworks.length;
+  const totalPages = Math.ceil(totalCards / cardsPerPage);
 
-    if(fireworks.length == 0) {
-        console.log("Loading...")
-        return (
-            <h1 className='text-light'>Loading...</h1>
-        )
-    }
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = fireworks.slice(indexOfFirstCard, indexOfLastCard);
 
-    return (
-        <>
-            <img src="./headerImg2.png" className="bannerImage" alt="banner" />
-            {
-                fireworks.map((f, index) => (
-                    <Card key={index} data={f} />
-                ))
-            }
-        </>
-    )
+  const handlePageChange = newPage => {
+    setCurrentPage(newPage);
+  };
+
+  if (fireworks.length === 0) {
+    return <h1 className='text-light'>Loading...</h1>;
+  }
+
+  return (
+    <>
+      <img src='./headerImg2.png' className='bannerImage' alt='banner' />
+      {currentCards.map((f, index) => (
+        <Card key={index} data={f} />
+      ))}
+      <div className='text-light' style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px'}}>
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span style={{ margin: '0 10px' }}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
+    </>
+  );
 }
 
 export default CardHolder;
