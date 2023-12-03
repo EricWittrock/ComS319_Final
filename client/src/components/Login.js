@@ -33,14 +33,11 @@ function Login() {
                     <div className="row gx-lg-5 align-items-center mb-5">
                     <div className="col-lg-6 mb-5 mb-lg-0" style={{zIndex: "10"}}>
                         <h1 className="my-5 display-5 fw-bold ls-tight" style={{color: "hsl(218, 81%, 95%)"}}>
-                        The best offer <br />
-                        <span id="infoHeaderColored">for your business</span>
+                        Sign up now for <br />
+                        <span id="infoHeaderColored">Little Fireworks</span>
                         </h1>
                         <p className="mb-4 opacity-70" style={{color: "hsl(218, 81%, 85%)"}}>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Temporibus, expedita iusto veniam atque, magni tempora mollitia
-                        dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-                        ab ipsum nisi dolorem modi. Quos?
+                        Our locally owned and operated business has been locally owned and operated since 2023. Our name may be Little, but our fireworks are too.
                         </p>
                     </div>
         
@@ -72,7 +69,7 @@ function Login() {
                             </button>
         
                             <div className="text-center">
-                                <p type="button" onClick={returnToHome}><u>return to home page</u></p>
+                                <p type="button" onClick={returnToHome}><u>Back to home</u></p>
                             </div>
                             </form>
                         </div>
@@ -93,6 +90,12 @@ function Login() {
                 <div className="row d-flex justify-content-center align-items-center h-100">
                 <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div id="loginBox" className="card text-white" style={{borderRadius: "1rem"}}>
+                    <span onClick={returnToHome}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                    </span>
                     <div className="card-body p-5 text-center">
 
                         <div className="mb-md-5 mt-md-4 pb-5">

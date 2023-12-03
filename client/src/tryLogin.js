@@ -31,12 +31,22 @@ export function tryLogin(email, password) {
 }
 
 export function tryRegister(email, password) {
+    if (!email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )){
+        window.alert("invalid email");
+        return;
+      }
     if(email.length == 0) {
         window.alert("email is empty");
         return;
     }
     if(password.length == 0) {
         window.alert("password is empty");
+        return;
+    }
+    if(password.length < 7) {
+        window.alert("password is too short");
         return;
     }
 
