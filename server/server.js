@@ -7,11 +7,13 @@ const cors = require("cors");
 const { MongoClient } = require("mongodb");
 
 const port = 8000;
-const url = "mongodb://127.0.0.1:27017";
+const url = "mongodb://127.0.0.1:27017/";
 const dbName = "final";
+const collectionName = "users";
 
 const client = new MongoClient(url);
-const db = client.db(dbName);
+var db;
+var collection;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -27,7 +29,7 @@ app.post('/login', async (req, res) => {
     const password = req.body.password;
     const passHash = hashPassword(password);
 
-    const results = await db.collection("users").find({"email":email}).toArray();
+    const results = await collection.find({"email":email}).toArray();
 
     if(results.length == 0) {
         res.json({success: false, error: "No account with that email exists"});
@@ -40,13 +42,13 @@ app.post('/login', async (req, res) => {
     }
 
     const sessId = randSessionId();
-    await db.collection("users").updateOne({email:email},{$set:{session:sessId}})
+    await collection.updateOne({email:email},{$set:{session:sessId}})
     res.json({success: true, email: email, session: sessId});
 });
 
 app.post('/sessionLogin', async (req, res) => {
     const sess = req.body.session;
-    const results = await db.collection("users").find({"session":sess}).toArray();
+    const results = await collection.find({"session":sess}).toArray();
 
     if(results.length == 0) {
         res.json({success: false});
@@ -62,7 +64,7 @@ app.post('/register', async (req, res) => {
     const password = req.body.password;
     const passHash = hashPassword(password);
 
-    const results = await db.collection("users").find({"email":email}).toArray();
+    const results = await collection.find({"email":email}).toArray();
 
     if(results.length != 0) {
         res.json({success: false, error: "An account already exists with that email"});
@@ -75,7 +77,7 @@ app.post('/register', async (req, res) => {
         password: passHash,
         session: sessId
     };
-    await db.collection("users").insertOne(newUser);
+    await collection.insertOne(newUser);
 
     console.log("register with email: " + email + " and password: " + password);
     console.log("Hashed password: " + passHash);
@@ -100,8 +102,13 @@ function hashPassword(password) {
 // create test account if it does not already exsist
 // then start the server
 (async ()=>{
+    console.log("Connecting to database...");
+    await client.connect();
+    db = client.db(dbName);
+    collection = db.collection(collectionName);
+
     console.log("Checking to see if test account exists...");
-    const results = await db.collection("users").find({"email":"test@test.com"}).toArray();
+    const results = await collection.find({"email":"test@test.com"}).toArray();
 
     if(results.length == 0) {
         console.log("Test account not found. Creating test account...");
@@ -110,7 +117,7 @@ function hashPassword(password) {
             password: hashPassword("test123"),
             session: randSessionId()
         };
-        await db.collection("users").insertOne(newUser);
+        await collection.insertOne(newUser);
     }else {
         console.log("Test account found. Starting server...");
     }
