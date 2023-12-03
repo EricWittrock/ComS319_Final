@@ -52,7 +52,9 @@ function Header({callback}) {
         <a className="navbar-brand" type="button" onClick={shopClick}>Shop</a>
         <a className="navbar-brand" type="button" onClick={checkoutClick}>Checkout</a>
         <a className="navbar-brand" type="button" onClick={aboutClick}>About</a>
-        
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent"></div>
+
         <div>
           <span className="navbar-text" style={{paddingRight:"10px"}}>{email||""}</span>
           <a className="navbar-brand" type="button" onClick={loginClick}>{email?"Logout":"Login"}</a>
