@@ -9,6 +9,7 @@ window.globalVars = {
     _email: "",
     session: localStorage.getItem("session")
   },
+  state: 0
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

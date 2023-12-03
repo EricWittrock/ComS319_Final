@@ -4,7 +4,24 @@ TODO
 - [x] login system
 - [ ] add more validation checks for email and password registration (tryLogin.js)
 - [ ] add rest of fireworks info to the shop cards
-- [ ] all the other stuff
+- [ ] cart/checkout
+
+
+Requirements
+
+- [ ] rename client folder to "frontend" and server to "backend"
+- [ ] All Database files must be inside "backend" folder.
+- [ ] All image files, text files, JSON files must be backend this folder.
+- [x] All NodeJS, Express, Database configuration files must be backend this folder.
+- [ ] Must have 2 at least 2 views for products or services
+- [ ] student info view(page): 
+    course name: SE/ComS319 Construction of User Interfaces, 
+    Date,
+    Complete name of students and ISU email,
+    Complete name of professor and email : Dr. Abraham N. Aldaco Gastelum,
+
+
+
 
 SETUP
 - open 2 terminals, one in the client dir, the other in the server dir

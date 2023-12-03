@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <div id="page">
         <Header />
-        <img src="./headerImg2.png" className="bannerImage" alt="banner" />
         <CardHolder />
       </div>
       <Login />

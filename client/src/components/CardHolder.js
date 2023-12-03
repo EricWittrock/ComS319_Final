@@ -25,9 +25,14 @@ function CardHolder() {
     }
 
     return (
-        fireworks.map((f, index) => (
-            <Card key={index} data={f} />
-        ))
+        <>
+            <img src="./headerImg2.png" className="bannerImage" alt="banner" />
+            {
+                fireworks.map((f, index) => (
+                    <Card key={index} data={f} />
+                ))
+            }
+        </>
     )
 }
 

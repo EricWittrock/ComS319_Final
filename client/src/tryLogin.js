@@ -71,8 +71,11 @@ export function tryRegister(email, password) {
 
 export function trySessionLogin() {
     let session = localStorage.getItem("session");
+    window.globalVars.session = session;
     if(!session) {
         console.log("no session set. not auto logging in");
+        window.globalVars.account.email = "";
+        window.globalVars.account.session = "";
         return;
     }
     
@@ -92,10 +95,16 @@ export function trySessionLogin() {
             window.globalVars.account.email = data.email;
         }else {
             console.log("session login failed");
+            localStorage.setItem("session", "");
+            window.globalVars.session = "";
+            window.globalVars.account.email = "";
         }
     })
     .catch(err => {
         console.log("login response error:")
         console.log(err);
+        localStorage.setItem("session", "");
+        window.globalVars.session = "";
+        window.globalVars.account.email = "";
     });
 }
