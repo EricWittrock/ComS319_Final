@@ -4,7 +4,7 @@ export function tryLogin(email, password) {
         return;
     }
     console.log("Trying to login with email: " + email + " and password: " + password);
-    fetch('/login', {
+    fetch('http://localhost:8000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -41,7 +41,8 @@ export function tryRegister(email, password) {
     }
 
     console.log("Trying to register with email: " + email + " and password: " + password);
-    fetch('/register', {
+    // "proxy": "http://localhost:8000",
+    fetch('http://localhost:8000/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -75,7 +76,7 @@ export function trySessionLogin() {
         return;
     }
     
-    fetch('/sessionLogin', {
+    fetch('http://localhost:8000/sessionLogin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -5,7 +5,7 @@ function CardHolder() {
     const [fireworks, setFireworks] = useState([]);
 
     useEffect(() => {
-        fetch('/shopdata')
+        fetch('http://localhost:8000/shopdata')
             .then(res => res.json())
             .then(data => {
                 const d = data.fireworkData.filter(i=>i.type=='firework');

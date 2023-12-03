@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const crypto = require('crypto');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 const { MongoClient } = require("mongodb");
 
 const port = 8000;
@@ -12,7 +13,7 @@ const dbName = "final";
 const client = new MongoClient(url);
 const db = client.db(dbName);
 
-
+app.use(cors());
 app.use(bodyParser.json());
 
 // user makes request for the list of shop items
