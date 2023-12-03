@@ -2,7 +2,9 @@ TODO
 
 - [x] react/express setup + basic components
 - [x] login system
-- [ ] add more validation checks for email and password registration (tryLogin.js)
+- [x] add more validation checks for email and password registration (tryLogin.js)
+- [ ] fix header vanishing if the page width is too small
+- [ ] make store page navigible from sign in page without having to login/signup
 - [ ] add rest of fireworks info to the shop cards
 - [ ] cart/checkout
 
