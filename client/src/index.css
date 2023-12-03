@@ -93,3 +93,8 @@ nav {
   background-image: linear-gradient(25deg, #612d4e, transparent);
   border: 1px solid #895483;
 }
+
+.checkoutModal {
+  background-color: #813a7e;
+  background-image: linear-gradient(20deg, #77237f, #661a4d);
+}
