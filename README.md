@@ -18,7 +18,7 @@ Requirements
 - [ ] All image files, text files, JSON files must be backend this folder.
 - [x] All NodeJS, Express, Database configuration files must be backend this folder.
 - [ ] Must have 2 at least 2 views for products or services
-- [ ] student info view(page): 
+- [x] student info view(page): 
     course name: SE/ComS319 Construction of User Interfaces, 
     Date,
     Complete name of students and ISU email,
