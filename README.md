@@ -10,6 +10,10 @@ TODO
 - [x] add about page component and add to header
 - [ ] cart/checkout
 
+Final Submission TODO:
+- [ ] add search feature
+- [ ] implement post/delete
+- [ ] prolly more stuff idk
 
 Requirements
 
