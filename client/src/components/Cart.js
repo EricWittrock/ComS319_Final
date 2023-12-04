@@ -1,12 +1,65 @@
-function Cart() {
-    let data = [];
+import Card from './Card';
 
-    function changePageStore() {
+function Cart({email, forceUpdate}) {
+    let data = window.globalVars.shopData.filter(i => window.globalVars.cart[i.productid] > 0);
 
+    function buyButton() {
+        // validate name
+      if(document.getElementById("typeName").value.length < 1){
+        window.alert("invalid name. field is empty");
+        return;
+      }
+
+        // validate email
+      if(document.getElementById("typeEmail").value.length < 1){
+        window.alert("invalid email. field is empty");
+        return;
+      }
+      if (!document.getElementById("typeEmail").value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+        window.alert("invalid email format");
+        return;
+      }
+
+        // validate state
+      if(document.getElementById("typeState").value.length < 1){
+        window.alert("invalid state. field is empty");
+        return;
+      }
+
+      // validate address
+      if(document.getElementById("typeAdr").value.length < 1){
+        window.alert("invalid address. field is empty");
+        return;
+      }
+
+      // validate city
+      if(document.getElementById("typeCity").value.length < 1){
+        window.alert("invalid city. field is empty");
+        return;
+      }
+
+      // validate zip
+      if (!document.getElementById("typeZip").value.match(/^\d{5}$/)){
+        window.alert("invalid zip, use the format: #####");
+        return;
+      }
+
+      // validate card
+      if (!document.getElementById("typeCard").value.match(/^\d{4} \d{4} \d{4} \d{4}$/)){
+        window.alert("invalid card, use the format: #### #### #### ####");
+        return;
+      }
+
+        window.globalVars.cart = {};
+        window.location.reload();
     }
 
-    function changePageConfirm() {
+    console.log("forece update: " + forceUpdate + " in Cart"); 
+    console.log(window.globalVars.cart);
 
+    let priceSum = 0;
+    for(let i = 0; i < data.length; i++) {
+        priceSum += data[i].price * window.globalVars.cart[data[i].productid];
     }
   
     return (
@@ -21,22 +74,21 @@ function Cart() {
                   <div className="row">
   
                     <div className="col-lg-7">
-                      <button className="btn btn-primary my-2" onClick={changePageStore}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
-                          <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                        </svg>
-                        <span> Back to Store</span>
-                      </button>
   
                       <div className="d-flex justify-content-between align-items-center mb-4">
                         <div>
                           <h3 className="mb-1">Shopping cart</h3>
                           <p className="mb-0">You have {data.length} items in your cart</p>
+                          <p className="mb-0" style={{display:email?"none":""}}>You must be logged in to make a purchase</p>
                         </div>
                       </div>
-  
-                      todo
-  
+                      <div style={{borderRadius:"8px", overflow:"hidden"}}>
+                        {
+                            data.map((i)=>{
+                                return <Card key={i.productid+"_cart"} data={i} email={email} forceUpdate={forceUpdate+10000}/>
+                            })
+                        }  
+                      </div>
                     </div>
                     <div className="col-lg-5">
   
@@ -52,14 +104,13 @@ function Cart() {
   
                           <form className="mt-4">
                             <div className="form-outline form-white mb-4">
-                              <input type="text" id="typeName" className="form-control form-control-lg" siez="17"
+                              <input type="text" id="typeName" className="form-control form-control-lg" size="17"
                                 placeholder="Cardholder's Name" />
                               <label className="form-label" htmlFor="typeName">Full Name</label>
                             </div>
   
                             <div className="form-outline form-white mb-4">
-                              <input type="text" id="typeEmail" className="form-control form-control-lg" siez="17"
-                                placeholder="your@email.com"/>
+                              <input type="text" id="typeEmail" className="form-control form-control-lg" size="17" defaultValue={email} placeholder="your@email.com"/>
                               <label className="form-label" htmlFor="typeEmail">Email</label>
                             </div>
   
@@ -111,18 +162,14 @@ function Cart() {
   
                           <hr className="my-4"/>
   
-                          todo
-  
-                          <hr className="my-4"/>
-  
                           <div className="d-flex justify-content-between mb-4">
                             <p className="mb-2">Total</p>
-                            <p className="mb-2">${999}.00</p>
+                            <p className="mb-2">${priceSum}.00</p>
                           </div>
   
-                          <button type="button" className="btn btn-outline-light btn-block btn-lg" onClick={changePageConfirm}>
+                          <button type="button" className="btn btn-outline-light btn-block btn-lg" onClick={buyButton}>
                             <div className="d-flex justify-content-between">
-                              <span>${999}.00 Confirm</span>
+                              <span>${priceSum}.00 Confirm</span>
                             </div>
                           </button>
   

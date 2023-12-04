@@ -75,7 +75,8 @@ app.post('/register', async (req, res) => {
     const newUser = {
         email: email,
         password: passHash,
-        session: sessId
+        session: sessId,
+        cart: {}
     };
     await collection.insertOne(newUser);
 
@@ -87,6 +88,24 @@ app.post('/register', async (req, res) => {
 
 app.delete("/deleteAccount/", async (req, res) => {
     // TODO
+});
+
+app.put("/updateCart/", async (req, res) => {
+    console.log("updateCart");
+    console.log(req.body);
+    await collection.updateOne({session:req.body.session},{$set:{cart:req.body.cart}});
+    res.json({success: true});
+});
+
+app.post("/getCart/", async (req, res) => {
+    console.log("getCart");
+    const results = await collection.find({"session":req.body.session}).toArray();
+    if(results.length == 0) {
+        res.json({success: false});
+        console.log("getCart failed");
+        return;
+    }
+    res.json({success: true, cart: results[0].cart});
 });
 
 // generate random string of characters
@@ -115,7 +134,8 @@ function hashPassword(password) {
         const newUser = {
             email: "test@test.com",
             password: hashPassword("test123"),
-            session: randSessionId()
+            session: randSessionId(),
+            cart: {}
         };
         await collection.insertOne(newUser);
     }else {

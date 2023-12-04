@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 
-function CardHolder() {
+function CardHolder({email, forceUpdate}) {
   const [fireworks, setFireworks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 4;
@@ -11,6 +11,7 @@ function CardHolder() {
       .then(res => res.json())
       .then(data => {
         const d = data.fireworkData.filter(i => i.type === 'firework');
+        window.globalVars.shopData = d;
         setFireworks(d);
       })
       .catch(err => {
@@ -18,6 +19,9 @@ function CardHolder() {
         console.log(err);
       });
   }, []);
+
+  console.log("forece update: " + forceUpdate + " in CardHolder"); 
+  console.log(window.globalVars.cart);
 
   const totalCards = fireworks.length;
   const totalPages = Math.ceil(totalCards / cardsPerPage);
@@ -38,7 +42,7 @@ function CardHolder() {
     <>
       <img src='./headerImg2.png' className='bannerImage' alt='banner' />
       {currentCards.map((f, index) => (
-        <Card key={index} data={f} />
+        <Card key={f.productid} data={f} email={email} forceUpdate={forceUpdate}/>
       ))}
       <div className='text-light' style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px'}}>
         <button

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { trySessionLogin } from '../tryLogin';
 
-function Header({callback}) {
+function Header({stateCallback, emailCallback}) {
 
   const [email, setEmail] = useState(window.globalVars.account._email);
 
@@ -11,6 +11,7 @@ function Header({callback}) {
       set(e) {
         window.globalVars.account._email = e;
         setEmail(e);
+        emailCallback(e);
       },
       get() {
         return window.globalVars.account.email;
@@ -34,15 +35,15 @@ function Header({callback}) {
   }
 
   function shopClick() {
-    callback(0);
+    stateCallback(0);
   }
 
   function checkoutClick() {
-    callback(1);
+    stateCallback(1);
   }
 
   function aboutClick() {
-    callback(2);
+    stateCallback(2);
   }
 
   return (

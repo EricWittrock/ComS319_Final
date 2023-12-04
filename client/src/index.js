@@ -9,7 +9,8 @@ window.globalVars = {
     _email: "",
     session: localStorage.getItem("session")
   },
-  state: 0
+  cart:{},
+  shopData: []
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

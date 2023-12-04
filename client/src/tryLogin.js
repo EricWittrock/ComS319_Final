@@ -17,10 +17,11 @@ export function tryLogin(email, password) {
     .then(data => {
         console.log(data);
         if(data.success) {
-            window.globalVars.account.email = data.email;
             localStorage.setItem("session", data.session);
-            document.getElementById('page').style.filter="";
-            document.querySelectorAll('.loginContainer').forEach(e => e.style.display="none");
+            window.location.reload();
+            //window.globalVars.account.email = data.email;
+            //document.getElementById('page').style.filter="";
+            //document.querySelectorAll('.loginContainer').forEach(e => e.style.display="none");
         }else {
             window.alert(data.error)
         }
@@ -66,6 +67,7 @@ export function tryRegister(email, password) {
         console.log(data);
         if(data.success) {
             window.globalVars.account.email = data.email;
+            window.globalVars.account.session = data.session;
             localStorage.setItem("session", data.session);
             document.getElementById('page').style.filter="";
             document.querySelectorAll('.loginContainer').forEach(e => e.style.display="none");
@@ -117,4 +119,20 @@ export function trySessionLogin() {
         window.globalVars.session = "";
         window.globalVars.account.email = "";
     });
+}
+
+export function trySendCart() {
+    let email = window.globalVars.account._email;
+    if(!email) {
+        console.log("no email set. not sending cart");
+        return;
+    }
+    console.log("sending cart for email: " + email);
+    fetch('http://localhost:8000/updateCart', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({cart: window.globalVars.cart, session: window.globalVars.account.session}),
+    })
 }
