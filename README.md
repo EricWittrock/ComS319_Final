@@ -4,6 +4,7 @@ TEST ACCOUNT
 
 SETUP
 - open 2 terminals, one in the client dir, the other in the server dir
+- run "npm install" in both terminals
 - run "npm run start" in the client terminal
 - run either "npm run start" or "npm run dev" in the server terminal
 
