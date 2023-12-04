@@ -3,10 +3,10 @@ TEST ACCOUNT
 
 
 SETUP
-- open 2 terminals, one in the client dir, the other in the server dir
+- open 2 terminals, one in the frontend dir, the other in the backend dir
 - run "npm install" in both terminals
-- run "npm run start" in the client terminal
-- run either "npm run start" or "npm run dev" in the server terminal
+- run "npm run start" in the frontend terminal
+- run either "npm run start" or "npm run dev" in the backend terminal
 
 OPTIONAL SETUP
 - open MongoDB Compass and connect to 27017
