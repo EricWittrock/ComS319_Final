@@ -7,7 +7,7 @@
             "name":"Double Lotus",
             "price": 17,
             "description": "A dazzling two-tone display.",
-            "image": ["./images/fw5.png", "./images/fw5_bright.png"],
+            "image": ["/images/fw5.png", "/images/fw5_bright.png"],
             "init_frag": "frag1"
         },
         {
@@ -16,7 +16,7 @@
             "name":"Boomer",
             "price": 9,
             "description": "It goes boom.",
-            "image": ["./images/fw1.png", "./images/fw1_bright.png"],
+            "image": ["/images/fw1.png", "/images/fw1_bright.png"],
             "init_frag": "BoomerFrag1"
         },
         {
@@ -25,7 +25,7 @@
             "name":"The Splitter",
             "price": 12,
             "description": "A spectacular splitting spectacle.",
-            "image": ["./images/fw4.png", "./images/fw4_bright.png"],
+            "image": ["/images/fw4.png", "/images/fw4_bright.png"],
             "init_frag": "SplitterFrag1"
         },
         {
@@ -34,7 +34,7 @@
             "name":"Golden Glitter",
             "price": 999,
             "description": "A golden shower of sparks and a crowd favorite.",
-            "image": ["./images/fw2.png", "./images/fw2_bright.png"],
+            "image": ["/images/fw2.png", "/images/fw2_bright.png"],
             "init_frag": "GoldenFrag1"
         },
         {
@@ -43,7 +43,7 @@
             "name":"Chaos",
             "price": 20,
             "description": "what?!",
-            "image": ["./images/fw3.png", "./images/fw3_bright.png"],
+            "image": ["/images/fw3.png", "/images/fw3_bright.png"],
             "init_frag": "ChaosFrag1"
         },
 

@@ -31,7 +31,7 @@ function Card({data, email, forceUpdate}) {
         <div className="container-fluid no-gutters">
             <div className={"shop-row row" + (hover ? " hover" : "")}>
                 <div className="col-3">
-                    <img className="dimImage" src={data.image[hover?1:0]} alt = "Firework1"/>
+                    <img className="dimImage" src={"http://localhost:8000/public/"+data.image[hover?1:0]} alt = "Firework1"/>
                 </div>
                 <div className="col-9">
                     <h2 className="text-white">{data.name}</h2>

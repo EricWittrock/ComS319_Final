@@ -144,3 +144,5 @@ function hashPassword(password) {
 
     app.listen(port, () => console.log(`listening on port ${port}`));
 })();
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
