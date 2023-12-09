@@ -1,5 +1,5 @@
 body {
-  margin: 0px 2vw 0px 2vw;
+  margin: 0px 4vw 0px 4vw;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -42,16 +42,16 @@ nav {
 }
 
 .shop-row {
-  background-color: #351b35;
+  /* background-color: #351b35; */
   /* background-image: linear-gradient(77deg, #212121, #441843); */
-  color: #b0b0b0;
-  border-bottom: 2px solid #421941;
+  color: #d9d9d9;
+  /* border-bottom: 2px solid #171717; */
   transition: 0.2s ease-out;
 }
 
 .shop-row.hover {
   /* background-image: linear-gradient(77deg, #3e2f44, #833181); */
-  background-color: #502b50;
+  background-color: #363741;
 }
 
 .loginContainer {
@@ -97,4 +97,29 @@ nav {
 .checkoutModal {
   background-color: #813a7e;
   background-image: linear-gradient(20deg, #77237f, #661a4d);
+}
+
+.card-price {
+  border: 3px solid rgb(60 130 175);
+  color: #ffffffb8;
+  background-color: rgb(30 105 140);
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+}
+
+.card-price-holder {
+  background-color: #ffffff14;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#canvas {
+  display: none;
+  background-color: black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 9999;
+  border-radius: 10px;
 }

@@ -10,7 +10,10 @@ window.globalVars = {
     session: localStorage.getItem("session")
   },
   cart:{},
-  shopData: []
+  fireworkData: [],
+  shopData: [],
+  activeFirework: "",
+  _activeFirework: "",
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
