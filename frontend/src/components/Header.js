@@ -46,6 +46,10 @@ function Header({stateCallback, emailCallback}) {
     stateCallback(2);
   }
 
+  function profileClick() {
+    stateCallback(3);
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ">
       <div className="container-fluid">
@@ -57,7 +61,7 @@ function Header({stateCallback, emailCallback}) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent"></div>
 
         <div>
-          <span className="navbar-text" style={{paddingRight:"10px"}}>{email||""}</span>
+          <span className="navbar-text" onClick={profileClick} style={{paddingRight:"10px"}}>{email||""}</span>
           <a className="navbar-brand" type="button" onClick={loginClick}>{email?"Logout":"Login"}</a>
         </div>
 

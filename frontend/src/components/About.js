@@ -1,7 +1,7 @@
 function About() {
   return (
-    <div className="text-white">
-      <div className="aboutTitle" width="100%" style={{paddingTop: "2%"}}>
+    <div className="text-white" style={{paddingLeft: "2%", paddingBottom:"2%"}}>
+      <div className="aboutTitle" width="100%" style={{paddingTop: "2%", marginLeft: "10px"}}>
         <h1>About</h1>
         <hr
           style={{
