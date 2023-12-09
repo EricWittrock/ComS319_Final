@@ -16,6 +16,7 @@ function Profile(emailCallback) {
 
       if (data.success) {
         window.alert("Account deleted successfully.");
+        window.location.reload();
       } else {
         window.alert("Failed to delete account.");
       }
