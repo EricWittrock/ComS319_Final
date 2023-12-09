@@ -11,6 +11,7 @@ function CardHolder({email, forceUpdate}) {
       .then(res => res.json())
       .then(data => {
         const d = data.fireworkData.filter(i => i.type === 'firework');
+        window.globalVars.fireworkData = data.fireworkData;
         window.globalVars.shopData = d;
         setFireworks(d);
       })
@@ -44,7 +45,7 @@ function CardHolder({email, forceUpdate}) {
       {currentCards.map((f, index) => (
         <Card key={f.productid} data={f} email={email} forceUpdate={forceUpdate}/>
       ))}
-      <div className='text-light' style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px'}}>
+      <div className='text-light' style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px', padding:"10px"}}>
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}

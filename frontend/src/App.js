@@ -6,6 +6,7 @@ import Cart from './components/Cart';
 import About from './components/About';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import Canvas from './components/Canvas';
 
 const STATE_SHOP = 0;
 const STATE_CHECKOUT = 1;
@@ -66,6 +67,7 @@ function App() {
         }
       </div>
       <Login />
+      <Canvas />
     </div>
   );
 }
