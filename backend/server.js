@@ -87,7 +87,20 @@ app.post('/register', async (req, res) => {
 });
 
 app.delete("/deleteAccount/", async (req, res) => {
-    // TODO
+    const email = req.body.email;
+
+    try {
+        const result = await collection.deleteOne({ email: email });
+
+        if (result.deletedCount === 1) {
+            res.json({ success: true, message: 'Account deleted successfully.' });
+        } else {
+            res.json({ success: false, error: 'Account not found or could not be deleted.' });
+        }
+    } catch (error) {
+        console.error('Error deleting account:', error);
+        res.status(500).json({ success: false, error: 'Internal server error.' });
+    }
 });
 
 app.put("/updateCart/", async (req, res) => {
