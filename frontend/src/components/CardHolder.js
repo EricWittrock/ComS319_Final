@@ -41,7 +41,7 @@ function CardHolder({email, forceUpdate}) {
 
   return (
     <>
-      <img src='http://localhost:8000/public/headerImg2.png' className='bannerImage' alt='banner' />
+      <img src='http://localhost:8000/public/images/headerImg2.png' className='bannerImage' alt='banner' />
       {currentCards.map((f, index) => (
         <Card key={f.productid} data={f} email={email} forceUpdate={forceUpdate}/>
       ))}
