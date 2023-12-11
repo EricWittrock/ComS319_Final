@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 // user makes request for the list of shop items
 app.get('/shopdata', (req, res) => {
-    res.json(require('./shopdata.json'));
+    res.json(require('./data/shopdata.json'));
 });
 
 // user makes request to log in

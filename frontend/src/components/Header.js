@@ -34,6 +34,7 @@ function Header({stateCallback, emailCallback}) {
     document.querySelector('.loginContainer').style.display = "block";
   }
 
+  // use callbacks send state changes to App.js
   function shopClick() {
     stateCallback(0);
   }

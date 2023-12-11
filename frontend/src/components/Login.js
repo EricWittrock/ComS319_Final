@@ -5,6 +5,7 @@ function Login() {
 
     const [isRegistering, setIsRegistering] = useState(false);
 
+    // Login Page Functions
     function returnToHome() {
         document.getElementById('page').style.filter="";
         document.querySelectorAll('.loginContainer').forEach(e => e.style.display="none");

@@ -19,14 +19,14 @@ function App() {
   const [forceUpdate, setForceUpdate] = useState(0);
 
   useEffect(()=>{
-    window.addEventListener('beforeunload', trySendCart);
+    window.addEventListener('beforeunload', trySendCart); // send account changes to the server
   }, []);
 
   useEffect(() => {
     console.log("state changed to "+ state);
   }, [state]);
 
-  useEffect(() => { // load cart data on email change
+  useEffect(() => { // load user account data if logged in
     console.log("loading cart for email: " + email);
     fetch('http://localhost:8000/getCart', {
         method: 'POST',
@@ -49,7 +49,7 @@ function App() {
     });
   }, [email]);
 
-  return (
+  return ( // views for each page
     <div className="App">
       <div id="page">
         <Header stateCallback={setState} emailCallback={setEmail}/>
