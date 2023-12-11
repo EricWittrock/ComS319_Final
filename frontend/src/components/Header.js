@@ -51,11 +51,16 @@ function Header({stateCallback, emailCallback}) {
     stateCallback(3);
   }
 
+  function saleClick() {
+    stateCallback(4);
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ">
       <div className="container-fluid">
 
         <a className="navbar-brand" type="button" onClick={shopClick}>Shop</a>
+        <a className="navbar-brand" type="button" onClick={saleClick}>Sale</a>
         <a className="navbar-brand" type="button" onClick={checkoutClick}>Checkout</a>
         <a className="navbar-brand" type="button" onClick={aboutClick}>About</a>
 

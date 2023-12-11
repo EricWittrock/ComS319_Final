@@ -52,6 +52,9 @@ function Card({data, email, forceUpdate}) {
                     <h4 style={{color: "rgb(116, 116, 116)"}}>{data.description}</h4>
                     <div className="card-price-holder">
                         <span className="card-price">${data.price}.00</span>
+                        {   
+                            data.oldPrice && <span className="sale-price">On Sale, previously ${data.oldPrice}.00!</span>
+                        }
                     </div>
                     <div className="d-flex justify-content-between align-items-center" style={{marginTop:"7%"}}>
                         <div className="btn-group w-100">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { trySendCart } from './tryLogin';
 import Header from './components/Header';
 import CardHolder from './components/CardHolder';
+import SaleCardHolder from './components/SaleCardHolder';
 import Cart from './components/Cart';
 import About from './components/About';
 import Login from './components/Login';
@@ -12,6 +13,7 @@ const STATE_SHOP = 0;
 const STATE_CHECKOUT = 1;
 const STATE_ABOUT = 2;
 const STATE_PROFILE = 3;
+const STATE_SALE = 4;
 
 function App() {
   const [state, setState] = useState(0);
@@ -64,6 +66,9 @@ function App() {
         }
         {
           state==STATE_PROFILE && <Profile email={email}/>
+        }
+        {
+          state==STATE_SALE && <SaleCardHolder email={email} forceUpdate={forceUpdate}/>
         }
       </div>
       <Login />

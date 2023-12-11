@@ -24,6 +24,7 @@
             "productid": "firework_e2",
             "name":"The Splitter",
             "price": 12,
+            "oldPrice":15,
             "description": "A spectacular splitting spectacle.",
             "image": ["/images/fw4.png", "/images/fw4_bright.png"],
             "init_frag": "SplitterFrag1"

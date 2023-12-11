@@ -107,6 +107,16 @@ nav {
   padding: 5px 10px 5px 10px;
 }
 
+.sale-price {
+  border: 3px solid rgb(255 87 126);
+  color: rgb(255 87 126);
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  margin-left:10px;
+}
+
 .card-price-holder {
   background-color: #ffffff14;
   padding: 20px;
