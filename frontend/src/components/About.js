@@ -14,7 +14,7 @@ function About() {
 
       <h2>SE/ComS319 Construction of User Interfaces, Fall 2023</h2>
       <div className="text-light" style={{paddingTop: "5%"}}>
-        <h4>3 December 2023</h4>
+        <h4>12 December 2023</h4>
         <p>Eric Wittrock                        ejw3@iastate.edu</p>
         <p>Kale Kester                          kmkester@iastate.edu</p>
       </div>
